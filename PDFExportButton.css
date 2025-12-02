@@ -1,0 +1,38 @@
+.pdf-export-button {
+    background: linear-gradient(135deg, #00ff9d 0%, #00b8ff 100%);
+    color: #0a0a0f;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.pdf-export-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 255, 157, 0.3);
+}
+
+.pdf-export-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.pdf-export-button .spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #0a0a0f;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

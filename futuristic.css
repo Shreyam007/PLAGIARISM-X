@@ -1,0 +1,140 @@
+/* src/styles/futuristic.css */
+:root {
+  --primary: #00ff9d;
+  --secondary: #0095ff;
+  --accent: #ff00e6;
+  --bg-dark: #0a0a0f;
+  --bg-light: #ffffff;
+  --glass-dark: rgba(10, 10, 15, 0.7);
+  --glass-light: rgba(255, 255, 255, 0.7);
+  --neon-glow: 0 0 20px var(--primary),
+               0 0 40px var(--primary),
+               0 0 60px var(--primary);
+}
+
+[data-theme="light"] {
+  --bg: var(--bg-light);
+  --glass: var(--glass-light);
+  --text: #0a0a0f;
+}
+
+[data-theme="dark"] {
+  --bg: var(--bg-dark);
+  --glass: var(--glass-dark);
+  --text: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  overflow-x: hidden;
+  transition: background 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.app-container {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Glassmorphic Effects */
+.glass {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1), 
+    rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes scan {
+  0% { transform: translateX(-100%) skewX(-20deg); }
+  100% { transform: translateX(200%) skewX(-20deg); }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  border-radius: 10px;
+  border: 2px solid var(--bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, var(--secondary), var(--accent));
+}
+
+/* Terminal Styles */
+.terminal {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 255, 157, 0.3);
+  border-radius: 12px;
+  font-family: 'Courier New', monospace;
+  overflow: hidden;
+}
+
+.terminal-header {
+  background: rgba(0, 0, 0, 0.9);
+  padding: 10px 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-content {
+  padding: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.terminal-line {
+  color: #00ff9d;
+  margin-bottom: 5px;
+}
+
+.terminal-line::before {
+  content: '> ';
+  color: #0095ff;
+}
